@@ -10,11 +10,10 @@ app.get('/', (_, res: Response) => {
   res.status(sucess.code).send(sucess.mess);
 });
 
-if (process.env.NODE_ENV !== 'production') {
   const PORT = process.env.PORT || 6969;
   app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
   });
-}
 
 // Use serverless for Vercel deployment
 export const handler = serverless(app);
