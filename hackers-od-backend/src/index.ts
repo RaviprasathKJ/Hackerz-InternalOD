@@ -9,7 +9,11 @@ Connect();
 
 // Define the root endpoint
 app.get('/', (_, res: Response) => {
-  res.status(sucess.code).send(sucess.mess);
+  res.status(sucess.code).send({
+    message: 'Backend is up and running!',
+    status: 'success',
+    details: 'The backend API is working as expected.',
+  });
 });
 
 // For local development, run the Express app normally
@@ -17,6 +21,7 @@ if (process.env.NODE_ENV !== 'production') {
   // Start the Express server for local testing
   const PORT = process.env.PORT || 6969;
   app.listen(PORT, () => {
+    console.log(`Server running in local development mode on port ${PORT}`);
   });
 }
 
