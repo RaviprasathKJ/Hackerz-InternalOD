@@ -1,0 +1,11 @@
+const login = "select * from admin where admin_id = $1";
+const getAllStudents = "select * from users";
+const getApprovedStudents = "select od_details.reason, od_details.description,od_details.request_type, users.name, users.email, users.dept, users.sec, users.year,od_details.from_time,od_details.to_time from od_details join users on od_details.user_id = users.user_id where od_details.status = '1'";
+const getRejectedStudents = "select od_details.reason, od_details.description,od_details.request_type, users.name, users.email, users.dept, users.sec, users.year,od_details.from_time,od_details.to_time from od_details join users on od_details.user_id = users.user_id where od_details.status = '-1'";
+const getPendingStudents = "select od_details.od_id,od_details.request_type, od_details.reason, od_details.description, users.name, users.email, users.dept, users.sec, users.year,od_details.from_time,od_details.to_time from od_details join users on od_details.user_id = users.user_id where od_details.status = '0'";
+const getApprovedStudentsToday = "select od_details.reason, od_details.description,od_details.request_type,od_details.from_time,od_details.to_time, users.name, users.email, users.dept, users.sec, users.year from od_details join users on od_details.user_id = users.user_id where od_details.status = '1' and date = current_date";
+const getRejectedStudentsToday = "select od_details.reason, od_details.description,od_details.request_type,od_details.from_time,od_details.to_time, users.name, users.email, users.dept, users.sec, users.year from od_details join users on od_details.user_id = users.user_id where od_details.status = '-1' and date = current_date";
+const getPendingStudentsToday = "select od_details.od_id, od_details.reason,od_details.request_type, od_details.description,od_details.from_time,od_details.to_time, users.name, users.email, users.dept, users.sec, users.year from od_details join users on od_details.user_id = users.user_id where od_details.status = '0' and date = current_date";
+
+export default { login, getAllStudents, getApprovedStudents, getRejectedStudents, getPendingStudents, getApprovedStudentsToday, getRejectedStudentsToday, getPendingStudentsToday };
+
