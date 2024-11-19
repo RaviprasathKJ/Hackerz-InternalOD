@@ -1,25 +1,17 @@
 {
-  "version": 2,
   "builds": [
     {
-      "src": "index.ts",
-      "use": "@vercel/node"
+      "src": "src/index.ts",
+      "use": "@vercel/node",
+      "config": {
+        "zero-config": true
+      }
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "index.ts"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "index.ts",
-      "headers": {
-        "Access-Control-Allow-Credentials": "true",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET,OPTIONS,PATCH,DELETE,POST,PUT",
-        "Access-Control-Allow-Headers": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization"
-      }
+      "dest": "/api/$1"
     }
   ]
 }
