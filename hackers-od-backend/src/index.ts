@@ -16,4 +16,4 @@ app.get('/', (_, res: Response) => {
   });
 
 // Use serverless for Vercel deployment
-export const handler = serverless(app);
+// export const handler = serverless(app);
